@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+   
+    <link rel="stylesheet" type="text/css" media="screen" href="style/main.css" />
+    <script src="JavaScript/User.js"></script>
+    
+</head>
+
+<div id="maindiv">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="nav">
+                <a class="navbar-brand" href="#">Navbar</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+              
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        User
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="User.Html"> List</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                      </div>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link disabled" href="#">Disabled</a>
+                    </li>
+                  </ul>
+                  <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="number" placeholder="Search by Id" id="Id">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="Search()">Search</button>
+                  </form>
+                </div>
+              </nav>
+    
+    <div id="div2">
+<body onload="list();">
+<table id="table1" class="table table-sm table-dark">
+    <thead>
+        <th>
+            Field
+        </th>
+        <th>
+            entry
+        </th>
+    </thead>
+    <tbody>
+    
+        <tr>
+                <td>
+                    Username 
+                </td>
+                <td>
+                     <input id="fUsername" placeholder="Username">
+                </td>
+                
+        </tr>
+        <tr>
+            <td>
+                    Password 
+            </td>
+            <td>
+                    <input id="fPassword" type="password" placeholder="Think Random">
+            </td>
+        </tr>
+        <tr>
+                <td>First Name </td><td><input id="fFname" type="text" placeholder="First Name"></td>
+
+        </tr>
+        <tr>
+               <td>Last Name</td><td><input id="fLname" type="text" placeholder="Last Name"></td>
+        </tr>
+        <tr>
+             <td>Phone</td> <td><input id="fPhone" placeholder="Phone Number"></td>
+        </tr>
+        <tr>
+            <td> Email</td><td><input id="fEmail" placeholder="Email Address"></td>
+        </tr>
+        <tr>
+            <td></td><td><button type="button" class="btn-outline-success" onclick="create();">Submit</button></td>
+        </tr>
+        
+            </tbody>
+        
+
+    
+    
+   
+</table>   
+    
+</body>
+</div>
+</div>
+</html>
