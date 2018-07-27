@@ -219,3 +219,4 @@ C:\repos\Capstone\Final-Project-master\PRSserver\PrSserverSolution\PrSserver\obj
 C:\repos\Capstone\Final-Project-master\PRSserver\PrSserverSolution\PrSserver\bin\System.Web.Cors.dll
 C:\repos\Capstone\Final-Project-master\PRSserver\PrSserverSolution\PrSserver\bin\System.Web.Http.Cors.dll
 C:\repos\Capstone\Final-Project-master\PRSserver\PrSserverSolution\PrSserver\bin\System.Web.Http.Cors.xml
+C:\repos\Capstone\Final-Project-master\PRSserver\PrSserverSolution\PrSserver\obj\Debug\PrSserver.Migrations.practive.resources

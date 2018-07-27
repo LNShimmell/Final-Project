@@ -12,21 +12,27 @@ using System.Web.Http.Cors;
 namespace PrSserver.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
-    public class UsersController : ApiController
-    {
+    public class UsersController : ApiController{
+
+
+
+
 		private PrSModelController db = new PrSModelController();
 
 
-		//[HttpGet]
-		//public JsonRequest Authenticate(string username, string password) {
-		//	if (username == null || password == null){
-		//		return new JsonRequest { Error = "invalid entry, please input username and password into the appropraite fields.", Message = "Failed", Result = "failed" };
-		//	}
-		//	var usrname = db.Users.Find(username);
-		//}
+        [HttpGet]
+        public JsonRequest Authenticate(string username, string password)
+        {
+            if (username == null || password == null)
+            {
+                return new JsonRequest { Error = "invalid entry, please input username and password into the appropraite fields.", Message = "Failed", Result = "failed" };
+            }
+            var user = db.Users.SingleOrDefault(u => u.UserName == username && u.Password == password);
+            return new JsonRequest { Error = null, Data = user, Message = "success", Result = "login" };
+        }
 
-		//List out all Users
-		[HttpGet]
+        //List out all Users
+        [HttpGet]
 		[ActionName("List")]
 		public JsonRequest ListUsers() {
 			JsonRequest json = new JsonRequest();

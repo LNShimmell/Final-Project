@@ -45,14 +45,18 @@ namespace PrSserver.Controllers
 		[ActionName("Create")]
 		public JsonRequest CreateNewPurchaseRequest(PurchaseRequest PurchaseRequest) {
 			JsonRequest json = new JsonRequest();
-			if (ModelState.IsValid) {
-				json.Data = db.PurchaseRequests.Add(PurchaseRequest);
-				db.SaveChanges();
-				return json;
-			}
-			json.Message = "failed";
-			json.Error = "No values can be null";
-			return json;
+
+            if(!ModelState.IsValid){
+                json.Message = "failed";
+                json.Error = "No values can be null";
+                return json;
+            }
+            else
+            {
+                json.Data = db.PurchaseRequests.Add(PurchaseRequest);
+                db.SaveChanges();
+                return json;
+            }
 		}
 
 		//delete a PurchaseRequest permanitly 
@@ -66,6 +70,7 @@ namespace PrSserver.Controllers
 				return json;
 			}
 			var PurchaseRequest = db.PurchaseRequests.Find(Id);
+            var lineitems = db.PurchaseRequestLineItems.Where(li => li.PurchaseRequestId == Id);
 			json.Data = db.PurchaseRequests.Remove(PurchaseRequest);
 			db.SaveChanges();
 			return json;
@@ -73,12 +78,13 @@ namespace PrSserver.Controllers
 		//Make changes to an existing PurchaseRequest
 		[HttpPost]
 		[ActionName("Edit")]
-		public JsonRequest EditPurchaseRequest(PurchaseRequest PurchaseRequest) {
+		public JsonRequest EditPurchaseRequest(PurchaseRequest purchaseRequest) {
+            purchaseRequest.PurchaseRequestLineItems = null;
 			JsonRequest json = new JsonRequest();
 			if (ModelState.IsValid) {
-				db.Entry(PurchaseRequest).State = EntityState.Modified;
-				db.SaveChanges();
-				json.Data = PurchaseRequest;
+				db.Entry(purchaseRequest).State = EntityState.Modified;
+                db.SaveChanges();
+				json.Data = purchaseRequest;
 				return json;
 			}
 			json.Error = "Invalaid entry";

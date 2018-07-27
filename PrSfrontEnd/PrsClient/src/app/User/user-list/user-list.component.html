@@ -1,0 +1,14 @@
+
+<table class="table" >
+  <thead class="thead-dark"> 
+  <tr>
+    <th>UserName</th><th>Name </th><th>Admin</th><th>Review</th><th>Actions</th>
+  </tr>
+  </thead>
+  <tbody >
+    <tr  *ngFor="let user of users">
+     <td>{{user.UserName}}</td> <td>{{user.Fname}} {{user.Lname}}</td><td>{{user.IsAdmin}}</td><td>{{user.IsReviewer}}</td><td><a routerLink="../user-details/{{user.Id}}">Detail</a> | <a routerLink="../user-edit/{{user.Id}}">Edit</a></td>
+    </tr>
+
+  </tbody>
+</table>

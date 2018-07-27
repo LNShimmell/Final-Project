@@ -225,6 +225,10 @@
     <Compile Include="Migrations\201806281534331_PRLI.Designer.cs">
       <DependentUpon>201806281534331_PRLI.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807251320283_pr active.cs" />
+    <Compile Include="Migrations\201807251320283_pr active.Designer.cs">
+      <DependentUpon>201807251320283_pr active.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\PrSModelController.cs" />
@@ -235,6 +239,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\GetTotal.cs" />
     <Compile Include="Utility\JsonRequest.cs" />
+    <Compile Include="Utility\VendorOrder.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -339,6 +344,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806281534331_PRLI.resx">
       <DependentUpon>201806281534331_PRLI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807251320283_pr active.resx">
+      <DependentUpon>201807251320283_pr active.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

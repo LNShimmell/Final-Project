@@ -13,6 +13,7 @@ namespace PrSserver.Models {
 		[StringLength(20)] public string DeliveryMode { get; set; }
 		[StringLength(15)] public string Status { get; set; }
 		[DataType("decimal(12,2)")] public decimal Total { get; set; } = 0;
+        public bool Active { get; set; }
 		public int UserID { get; set; }
 		public virtual User User { get; set; }
 		public virtual List<PurchaseRequestLineItem> PurchaseRequestLineItems { get; set; }

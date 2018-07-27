@@ -25,7 +25,16 @@ namespace PrSserver.Controllers
 
 		}
 
+        //List out all Purchase Request for one user
+        [HttpGet]
+        [ActionName("Listone")]
+        public JsonRequest ListPRone (int? Id)
+        {
+            JsonRequest json = new JsonRequest();
+            json.Data = db.PurchaseRequestLineItems.Where(li => li.PurchaseRequestId == Id).ToList();
+            return json;
 
+        }
 		//List out all PurchaseRequestLineItems
 		[HttpGet]
 		[ActionName("List")]
@@ -56,8 +65,8 @@ namespace PrSserver.Controllers
 			JsonRequest json = new JsonRequest();
 			if (ModelState.IsValid) {
 				json.Data = db.PurchaseRequestLineItems.Add(purchaseRequestLineItem);
-				getTotal(purchaseRequestLineItem.PurchaseRequestId);
 				db.SaveChanges();
+				getTotal(purchaseRequestLineItem.PurchaseRequestId);
 				return json;
 			}
 			json.Message = "failed";

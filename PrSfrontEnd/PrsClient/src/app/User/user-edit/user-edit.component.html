@@ -1,0 +1,16 @@
+<table class="table">
+    <tbody >
+      <tr><td>First Name</td> <td><input type="text" value="{{user.Fname}}"></td></tr>
+      <tr><td>First Name</td> <td><input type="text" value="{{user.Lname}}"></td></tr>      
+      <tr><td>User Name</td><td><input type="text"   value="{{user.UserName}}"></td></tr>
+      <tr><td>Phone</td><td><input type="text" minlength="10" value="{{user.Phone}}"></td></tr>
+      <tr><td>Email</td><td><input type="email"   value="{{user.UserName}}"></td></tr>
+      <tr><td> Privilages</td><td>
+        <label for="Admin"> Admin </label><input id="Admin" type="checkbox" [(ngModel)]="user.IsAdmin"/>
+        <label for="Reviewer">Reviewer </label><input id="Reviewer" type="checkbox" [(ngModel)]="user.IsReviewer"/>
+        <label for="Active">Active</label><input id="Active" type="checkbox" [(ngModel)]="user.IsActive" />
+      </td></tr>
+    </tbody>
+  </table>
+
+  <button class="btn btn-warning"(click)="edit(user)">Edit</button>
