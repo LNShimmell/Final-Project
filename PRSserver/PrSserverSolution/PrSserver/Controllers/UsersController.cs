@@ -21,6 +21,7 @@ namespace PrSserver.Controllers
 
 
         [HttpGet]
+        [ActionName("logIn")]
         public JsonRequest Authenticate(string username, string password)
         {
             if (username == null || password == null)
@@ -28,6 +29,11 @@ namespace PrSserver.Controllers
                 return new JsonRequest { Error = "invalid entry, please input username and password into the appropraite fields.", Message = "Failed", Result = "failed" };
             }
             var user = db.Users.SingleOrDefault(u => u.UserName == username && u.Password == password);
+            if(user == null)
+            {
+                return new JsonRequest { Error = "Invalid Username password combination." };
+            }
+            user.Password = null;
             return new JsonRequest { Error = null, Data = user, Message = "success", Result = "login" };
         }
 
@@ -36,7 +42,12 @@ namespace PrSserver.Controllers
 		[ActionName("List")]
 		public JsonRequest ListUsers() {
 			JsonRequest json = new JsonRequest();
-			json.Data = db.Users.ToList();
+			var users = db.Users.ToList();
+            foreach(var user in users)
+            {
+                user.Password = null;
+            }
+            json.Data = users;
 			return json;
 		}
 
@@ -50,7 +61,9 @@ namespace PrSserver.Controllers
 				json.Error = "Id must not be null";
 				return json;
 			}
-			json.Data = db.Users.Find(Id);
+			var user= db.Users.Find(Id);
+            user.Password = null;
+            json.Data = user;
 			return json;
 		}
 
@@ -89,10 +102,19 @@ namespace PrSserver.Controllers
 		[ActionName("Edit")]
 		public JsonRequest EditUser(User User) {
 			JsonRequest json = new JsonRequest();
-			if (ModelState.IsValid) {
-				db.Entry(User).State = EntityState.Modified;
+            if (User.Password == null) {
+               var user = db.Users.Find(User.Id);
+                user.IsActive = User.IsActive;
+                user.IsReviewer = User.IsReviewer;
+                user.Fname = User.Fname;
+                user.Lname = User.Lname;
+                user.Phone = User.Phone;
+                user.IsAdmin = User.IsAdmin;
+                user.Email = User.Email;
+				db.Entry(user).State = EntityState.Modified;
 				db.SaveChanges();
-				json.Data = User;
+                user.Password = null;
+				json.Data = user;
 				return json;
 			}
 			json.Error = "Invalaid entry";
