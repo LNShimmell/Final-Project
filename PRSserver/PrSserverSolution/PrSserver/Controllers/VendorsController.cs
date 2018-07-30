@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -126,5 +127,14 @@ namespace PrSserver.Controllers
             
 
         }
+        [HttpGet]
+        [ActionName("VendorOrder")]
+        public JsonRequest VendorOrder(int? Id)
+        {
+  
+           IQueryable<object> x = db.Database.SqlQuery<string>("QueryVendorOrder @Id", new SqlParameter("@Id", Id)).AsQueryable();
+            return new JsonRequest { Data = x, Error = null, Message = "success"};
+        }
+
     }
 }
